@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LawDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LawDB.dbo.tblPara' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblPara">
+          <Key>
+            <PropertyRef Name="ParaID" />
+            <PropertyRef Name="ParaText" />
+          </Key>
+          <Property Name="ParaID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ParaText" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LawDB.dbo.tblParaLeft' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblParaLeft">
+          <Key>
+            <PropertyRef Name="ParaID" />
+          </Key>
+          <Property Name="ParaID" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LawDB.dbo.tblParaRight' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblParaRight">
+          <Key>
+            <PropertyRef Name="ParaID" />
+          </Key>
+          <Property Name="ParaID" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Function Name="sp_ProcInitialize" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_ProcMove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Choice" Type="varchar" Mode="In" />
+          <Parameter Name="SelectedParaID" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="LawDBModelStoreContainer">
+          <EntitySet Name="tblPara" EntityType="Self.tblPara" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblPara].[ParaID] AS [ParaID], 
+    [tblPara].[ParaText] AS [ParaText]
+    FROM [dbo].[tblPara] AS [tblPara]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblParaLeft" EntityType="Self.tblParaLeft" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblParaLeft].[ParaID] AS [ParaID]
+    FROM [dbo].[tblParaLeft] AS [tblParaLeft]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblParaRight" EntityType="Self.tblParaRight" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblParaRight].[ParaID] AS [ParaID]
+    FROM [dbo].[tblParaRight] AS [tblParaRight]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LawDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblPara">
+          <Key>
+            <PropertyRef Name="ParaID" />
+            <PropertyRef Name="ParaText" />
+          </Key>
+          <Property Name="ParaID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ParaText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblParaLeft">
+          <Key>
+            <PropertyRef Name="ParaID" />
+          </Key>
+          <Property Name="ParaID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblParaRight">
+          <Key>
+            <PropertyRef Name="ParaID" />
+          </Key>
+          <Property Name="ParaID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="LawDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblParas" EntityType="Self.tblPara" />
+          <EntitySet Name="tblParaLefts" EntityType="Self.tblParaLeft" />
+          <EntitySet Name="tblParaRights" EntityType="Self.tblParaRight" />
+          <FunctionImport Name="sp_ProcInitialize" />
+          <FunctionImport Name="SP_ProcMove">
+            <Parameter Name="Choice" Mode="In" Type="String" />
+            <Parameter Name="SelectedParaID" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LawDBModelStoreContainer" CdmEntityContainer="LawDBEntities">
+          <EntitySetMapping Name="tblParas">
+            <EntityTypeMapping TypeName="LawDBModel.tblPara">
+              <MappingFragment StoreEntitySet="tblPara">
+                <ScalarProperty Name="ParaID" ColumnName="ParaID" />
+                <ScalarProperty Name="ParaText" ColumnName="ParaText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParaLefts">
+            <EntityTypeMapping TypeName="LawDBModel.tblParaLeft">
+              <MappingFragment StoreEntitySet="tblParaLeft">
+                <ScalarProperty Name="ParaID" ColumnName="ParaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParaRights">
+            <EntityTypeMapping TypeName="LawDBModel.tblParaRight">
+              <MappingFragment StoreEntitySet="tblParaRight">
+                <ScalarProperty Name="ParaID" ColumnName="ParaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_ProcInitialize" FunctionName="LawDBModel.Store.sp_ProcInitialize" />
+          <FunctionImportMapping FunctionImportName="SP_ProcMove" FunctionName="LawDBModel.Store.SP_ProcMove" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
