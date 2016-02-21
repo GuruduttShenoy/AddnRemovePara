@@ -6,4 +6,11 @@ the Paragraphs correspoding to the values in the List B and display then in a te
 
 
 
-The SQL scripts that are required to create the SQL tables and stored procedures are attached with this solution
+The SQL scripts that are required to create the SQL tables and stored procedures are mentioned below and also attached with this solution
+
+
+SP_ProcMove.sql	
+sp_ProcInitialize.sql
+tblPara.sql
+tblParaLeft.sql
+tblParaRight.sql
