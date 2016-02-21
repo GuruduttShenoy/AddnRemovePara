@@ -19,43 +19,81 @@
   
     <form method="post">
         <div class="row">
+            <div class="col-lg-2">
+
+            </div>
+            <div class="col-lg-6">
+                <p>Please select the items from the List A and Move them to List B so that you can see the corresponding paragraphs in the textbox below</p>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-2">
-
-
-                @Html.ListBoxFor(model => model.SelectedParaLeftID, new MultiSelectList(Model.paraLeftList, "Value", "Text"), new { @id = "ParaID", @style = "width:200px;height:60px;" })
 
             </div>
             <div class="col-sm-2">
-                
+
+                <b>List A</b>
+                @Html.ListBoxFor(model => model.SelectedParaLeftID, new MultiSelectList(Model.paraLeftList, "Value", "Text"), new { @id = "ParaID", @style = "width:200px;height:60px;" })
+
+            </div>
+            <div class="col-sm-1">
+                <br/>
                 <a href="~/Controllers/Add">
-                    <input type="submit" value=">>" name="Add" />
+                    <input class="btn-success" type="submit" value=">>" name="Add" />
                 </a>
                 <br/>
 
-                    <input type="submit" value="<<" name="Remove" />
+                    <input class="btn-danger" type="submit" value="<<" name="Remove" />
                 </div>
 
             <div class="col-sm-2">
+                <b>List B</b>
                 @Html.ListBoxFor(model => model.SelectedParaRightID, new MultiSelectList(Model.paraRightList, "Value", "Text"), new { @id = "ParaID", @style = "width:200px;height:60px;" })
             </div>
 
         </div>
 
         <br />
+        
         <div class="row">
             <div class="col-sm-2">
+
             </div>
+            <div class="col-sm-1">
+            </div>
+            <div class="col-lg-6">
+                <p>
+                    Please select the submit button once you have made the selection
+                </p>
+                
+                <input class="btn-primary" type="submit" value="submit" name="Submit" />
+            </div>
+
             <div class="col-sm-2">
-                <input type="submit" value="submit" name="Submit" />
+
             </div>
-        </div>
+          </div>
  
 
     </form>
-
-
+    <br/>
+    
         <br />
-   @Html.TextArea("txtBox",Model.ParaListForTextArea)
+   
+    <div class="row">
+        <div class="col-sm-2">
 
-    </body>
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-lg-4">
+            <p> You have selected the below Paragraphs</p>
+            <br/>
+            @Html.TextArea("txtBox", Model.ParaListForTextArea,5,40,null)
+        </div>
+     </div>
+          
+
+</body>
 </html>
