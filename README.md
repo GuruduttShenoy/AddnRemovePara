@@ -10,8 +10,8 @@ The SQL scripts that are required to create the SQL tables and stored procedures
 
 <ul>
 <li>SP_ProcMove.sql	</li>
-sp_ProcInitialize.sql
-tblPara.sql
-tblParaLeft.sql
-tblParaRight.sql
+<li>sp_ProcInitialize.sql</li>
+<li>tblPara.sql</li>
+<li>tblParaLeft.sql</li>
+<li>tblParaRight.sql</li>
 </ul>
